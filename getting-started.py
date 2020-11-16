@@ -6,9 +6,22 @@ from utils.api_init import xpaas
 
 
 def getting_started():
-    logger.info("Getting Started with Chime APIs")
-    logger.info("This is playing ground for the Chime APIs. This code will not be executed at runtime")
-    logger.info("Chime Services Urls must 1st be configured in ./utils.api_init.py")
+    logger.info("Getting Started with CHIME APIs")
+    logger.info("This is playing ground for the CHIME APIs. This code will not be executed at runtime")
+    logger.info("CHIME Services Urls must 1st be configured in ./utils.api_init.py")
+
+    # ================= Accessing Context ==================================================================
+    logger.info("Application context is configured via ./config/config.yaml.")
+    logger.info("At runtime the application will be injected with values provided by the user, or use the default "
+                "values specified in the confgi.yaml file")
+    logger.info("You can set test values for any application parameter in /config/config-test.yaml")
+    logger.info("The application parameters are automatically loaded into a 'context' dictionary  object")
+    logger.info("In this example we will access a context parameter called 'NAAS_CLUSTER', that has a test value in "
+                "config-test.yaml")
+
+    nass_cluster = context['NAAS_CLUSTER']
+
+    logger.info("Parameter value is: "+nass_cluster)
 
     # ================= NAAS API Samples ===================================================================
     # Doing a simple NaaS search for all LTE cells. Returning selected fields only
@@ -40,17 +53,19 @@ def getting_started():
     # Sending a sample Workorder
 
     # Create a list of workitems.
-    # In this example a single RSI change for the 1st cell from the previous search
+    # In this example a single qrxlevmin change for the 1st cell from the previous search
     work_items = [
         {
-            "type": "CHANGE_RSI",
+            "type": "CHANGE_QRXLEVELMIN",
             "_cellId": lte_cells.body['elements'][0]['cell']['_id'],
-            "value": 126,
+            "value": -124,
         }
     ]
 
-    # Create a Workorder object. Eahc workorder is assigned a tracking id, that is automatically populated in the
+    # Create a Workorder object. Each workorder is assigned a tracking id, that is automatically populated in the
     # application context.
+    # Note that we pass the auto populated TRACKING_ID parameter in the workorder request. This allows CHIME Developer
+    # to correlate the execution of the application and the workorder.
     work_order = {
         'mode': 'OFFLINE_SIM',
         'method': 'NON_TRANSACTION',
@@ -60,12 +75,12 @@ def getting_started():
     }
 
     # Submitting the workorder.
-    logger.info("Sending workorder: "+str(work_order))
+    logger.info("Sending workorder: " + str(work_order))
 
     work_order_res = pgw.api.workorders.send_workorder(body=work_order)
 
-    logger.info("Workorder submitted. Server response: "+str(work_order_res.body))
-    logger.info("To track workorder execution follow the link: "+work_order_res.body['links'][0]['href'])
+    logger.info("Workorder submitted. Server response: " + str(work_order_res.body))
+    logger.info("To track workorder execution follow the link: " + work_order_res.body['links'][0]['href'])
 
 
 if __name__ == '__main__':
