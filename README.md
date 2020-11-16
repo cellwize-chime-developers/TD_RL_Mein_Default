@@ -8,7 +8,7 @@ address the specific needs of the operator’s network.\
 It includes a fully hosted development environment, that enables simple integration with CHIME services, 
 as well as testing and debugging your application code, without leaving the browser.
 
-This sample  application provides a starting point for developing python applications suitable for execution on the CHIME Developer platform.\
+This sample  application provides a starting point for developing python applications suitable for execution on the CHIME Developer platform.
 
 For more information about CHIME refer to: [CHIME Platform](https://https://www.cellwize.com/platform) \
 For API reference refer to: [CHIME API Reference](https://kb.cellwize.com/display/DPO/API+References)
@@ -17,29 +17,29 @@ For API reference refer to: [CHIME API Reference](https://kb.cellwize.com/displa
 #### Quick Start
 To call your first CHIME API, simply:
 * Configure API urls in <b>utils/api_init.py</b>
-  ```
-  # Configure CHIME Services endpoints
-  NAAS_URL = 'http:/<chime-developer-uri>/naas'
-  XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
-  PGW_URL = 'https://<chime-developer-uri>/pgw'
-  AUTH_URL = 'http://<chime-developer-token-uri>'
-
-  # Configure Client_Id and Client_Secret to enable authentication
-  CLIENT_ID = None
-  CLIENT_SECRET = None
-  ```
+     ```python
+      # Configure CHIME Services endpoints
+      NAAS_URL = 'http:/<chime-developer-uri>/naas'
+      XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
+      PGW_URL = 'https://<chime-developer-uri>/pgw'
+      AUTH_URL = 'http://<chime-developer-token-uri>'
+    
+      # Configure Client_Id and Client_Secret to enable authentication
+      CLIENT_ID = None
+      CLIENT_SECRET = None
+     ```
 * Call the API from <b>main.py</b>
-    ```
-    from utils.logger_config import logger
-    from utils.api_init import naas
-  
-    def main():
-      lte_cells_res = naas.api.cells.get_cells(params={'technology': 'LTE'})
-      logger.info("Cells: "+str(lte_cells.res.body))
+     ```python
+      from utils.logger_config import logger
+      from utils.api_init import naas
       
-    if __name__ == '__main__':
-        main()
-  ```
+      def main():
+          lte_cells_res = naas.api.cells.get_cells(params={'technology': 'LTE'})
+          logger.info("Cells: "+str(lte_cells.res.body))
+          
+      if __name__ == '__main__':
+          main()
+    ```
 
 #### Project Structure
 * <b>main.py</b> Main entry point for the application. 
@@ -94,11 +94,10 @@ At runtime, CHIME Platform injects the value of each of the parameters defined i
 Parameters values are available as environment variables, and are automatically populated into a <i>context</i> 
 dictionary object.\
 Working with the <i>context</i> object:
-```
+```python
 from utils.context import context
 
 naas_cluster = context.get('NAAS_CLUSTER')
-
 ```
 
 ##### Test Application Context
@@ -125,7 +124,7 @@ The CHIME python client library is embedded in the CHIME Developer development a
 ##### Client Initialization
 To initialize the CHIME client set the API configuration in <b>utils/api_init.py</b>\
 Configure the API urls (provided by Cellwize support), as well as your application CLIENT_ID and CLIENT_SECRET to enable authentication.
-```
+```python
 # Configure CHIME Services endpoints
 NAAS_URL = 'http:/<chime-developer-uri>/naas'
 XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
@@ -142,21 +141,21 @@ and configures them with an access token.
 
 ##### Making API Calls
 To use a CHIME client, simple import it to your code and invoke the API. For example:
-```
+```python
 from utils.api_init import naas
 
 lte_cells_res = naas.api.cells.get_cells(params={'technology': 'LTE', 'fields': '_id,name,mcc,mnc,rsi,pci'})
 ```
 In the example above we are calling the NaaS  <i>cells</i> resource, invoking the <i>get_cells</i> API. 
 The response body is available via the <i>body</i> attribute of the response object. It is a dictionary object representing the json response of the REST API call.
-```
+```python
 lte_cells = lte_cells_res.body
 ```
 
 ###### Query parameters
 Sending query string parameters is done via the <i>params</i> attribute, which takes a dictionary (json) as value. 
 For example:
-```
+```python
 from utils.api_init import naas
 
 lte_cells = naas.api.cells.get_cells(params={'technology': 'LTE', 'fields': '_id,name,mcc,mnc,rsi,pci'})
@@ -168,7 +167,7 @@ GET /naas/v1/cells?technology=LTE&fields=_id,name,mcc,mnc,rsi,pci
 ###### Request Body 
 Sending a POST request body is dona via the <i>body</i> attribute, which takes a dictionary (json) as value.
 For example, sending a workorder request to PGW:
-```
+```python
 # Preparing a Workorder object
 work_order = {
         'mode': 'OFFLINE_SIM',
@@ -187,7 +186,7 @@ correlate the execution of the application and the workorder.
 ######  Path parameters
 Some API calls require a Path parameter. Path parameters are send as explicit values in the API call.
 For example, retrieving  all cells of a given cluster:
-```
+```python
 cells = naas.api.clusters.get_cluster_cells('TEST_CLUSTER')
 ```
 Translates to a request:
@@ -198,13 +197,13 @@ Which returns all cells belonging to the pre-defined cluster named <i>TEST_CLUST
 
 ###### Listing available APIs
 You can list available resources for each client by running the following:
-```
+```python
 naas.api.get_resource_list()
 
 ['cells', 'clusters', 'controllers', 'mos', 'networkmodel', 'neighbors', 'neural_engine', 'x2links']
 ```
 And for each resource, you can list available APIs:
-```
+```python
 naas.api.cells.actions
 
 {
@@ -222,7 +221,7 @@ naas.api.cells.actions
 #### Installing Dependencies 
 If you application requires additional python packages, you can install them into your workspace using the <b>pip install</b> menu command.\
 Configure the required libraries in <b>requirements.txt</b>. For example:
-```
+```text
 PyYAML~=5.3.1
 oauthlib~=3.1.0
 requests-oauthlib~=1.3.0
