@@ -249,7 +249,7 @@ PyYAML~=5.3.1
 oauthlib~=3.1.0
 requests-oauthlib~=1.3.0
 ```
-Use  <i>Terminal --> Run Task</i> to run the pre-defined <b>pip install</b> task. The tasks reads your <i>requirements.txt</i> and installs it into the development environment. Make sure to select the Python container to install the packages into the embedded CHIME Developer Python plugin.
+Use  <i>Terminal --> Run Task</i> to run the pre-defined <b>pip install</b> task, and provide the name of your project. The tasks reads your <i>requirements.txt</i> and installs it into the development environment.
 
 CHIME Platform reads the same <i>requirements.txt</i> as part of the application build process, and installs all required packages into the runtime environment. This ensures that your dev configuration and runtime configurations are always aligned.
 
