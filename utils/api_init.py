@@ -22,7 +22,7 @@ if CLIENT_ID is not None and CLIENT_SECRET is not None:
     client = BackendApplicationClient(client_id=CLIENT_ID)
     oauth = OAuth2Session(client=client)
     token = oauth.fetch_token(token_url=AUTH_URL, client_id=CLIENT_ID,
-                              client_secret=CLIENT_SECRET, verify=False)
+                              client_secret=CLIENT_SECRET, verify=True)
 
     # init API client headers with access_token
     HEADERS = {'Authorization': 'Bearer ' + token.get('access_token')}
