@@ -1,13 +1,12 @@
 application:
   meta:
-    name: chime-app-1
-    version: 1.0
+    name: chime-python-template
     description: This is a prototype chime application
     author:
   schema:
     - name: NAAS_CLUSTER
       displayName: NaaS Cluster
-      description: Name of NaaS cluster for this application
+      description: Name of NaaS cluster for this application.
       defaultValue:
       type: string
       group: General Settings
