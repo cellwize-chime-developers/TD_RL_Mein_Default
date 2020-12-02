@@ -6,10 +6,10 @@ from requests_oauthlib import OAuth2Session
 
 
 # Configure CHIME Services endpoints
-NAAS_URL = 'http://<chime-developer-uri>/naas'
-XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
-PGW_URL = 'https://<chime-developer-uri>/pgw'
-AUTH_URL = 'http://<chime-developer-token-uri>'
+NAAS_URL = 'https://apim.chime-dev.cellwize.com/gateway/naas'
+XPAAS_URL = 'https://apim.chime-dev.cellwize.com/gateway/xpaas'
+PGW_URL = 'https://<apim.chime-dev.cellwize.com/gateway/pgw'
+AUTH_URL = 'https://am.chime-dev.cellwize.com/gateway/chime/oauth/token'
 
 # Configure Client_Id and Client_Secret to enable authentication
 CLIENT_ID = None
