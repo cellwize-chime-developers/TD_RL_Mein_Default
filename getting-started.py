@@ -21,7 +21,7 @@ def getting_started():
 
     nass_cluster = context['NAAS_CLUSTER']
 
-    logger.info("Parameter value is: "+nass_cluster)
+    logger.info("Parameter value is: " + nass_cluster)
 
     # ================= NAAS API Samples ===================================================================
     # Doing a simple NaaS search for all LTE cells. Returning selected fields only
@@ -48,6 +48,23 @@ def getting_started():
     for i in range(5):
         logger.info(lte_cells.body['elements'][i]['cell'])
     logger.info("Current Page: " + str(lte_cells.body['pagination']['currentPage']))
+
+    # ================= XPaaS API Samples ===================================================================
+    # Getting counter data
+    # Modify this example to match the counter names, time range and desired cell population
+
+    # counter query definition
+    counter_query = {}
+    counter_query['counters'] = [{"name": "DL_PRB_UTIL_TTI_MEAN", "vendor": "NOKIA", "technology": "LTE"}]
+    counter_query['granularity'] = '60m'
+    counter_query['aggregatePopulation'] = 'false'
+    counter_query['from'] = "2020-11-03T00:00:00.000Z"
+    counter_query['to'] = "2020-12-03T00:00:00.000Z"
+    counter_query['population'] = ['3a4b27c5-9bbd-3cc4-884c-d6d0b2fec9ab', 'fb007287-785e-3c41-a652-b914a28c8c40']
+
+    # calling the api
+    counter_results = xpaas.api.counters.get_counters_data(body=counter_query)
+    logger.info(counter_results.body)
 
     # ================= PGW API Samples ===================================================================
     # Sending a sample Workorder
