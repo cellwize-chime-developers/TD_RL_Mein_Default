@@ -22,10 +22,10 @@ The following instructions explain how to configure your URLs and call your firs
 
 	```python
       # Configure CHIME Services endpoints
-      NAAS_URL = 'http:/<chime-developer-uri>/naas'
+      NAAS_URL = 'https:/<chime-developer-uri>/naas'
       XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
       PGW_URL = 'https://<chime-developer-uri>/pgw'
-      AUTH_URL = 'http://<chime-developer-token-uri>'
+      AUTH_URL = 'https://<chime-developer-token-uri>'
     
       # Configure Client_ID and Client_Secret to enable authentication
       CLIENT_ID = None
@@ -71,7 +71,6 @@ Application configuration is maintained in <i>/config/config.yaml</i>. The confi
 application:
   meta:
     name: chime-app-1
-    version: 1.0
     description: This is a prototype chime application
     author: john.doe@cellwize.com
   schema:
@@ -143,7 +142,7 @@ This section describes how to initialize the CHIME client.
 
 ```python
 # Configure CHIME Services endpoints
-NAAS_URL = 'http:/<chime-developer-uri>/naas'
+NAAS_URL = 'https:/<chime-developer-uri>/naas'
 XPAAS_URL = 'https://<chime-developer-uri>/xpaas'
 PGW_URL = 'https://<chime-developer-uri>/pgw'
 AUTH_URL = 'http://<chime-developer-token-uri>'
