@@ -2,7 +2,7 @@ application:
   meta:
     name: chime-python-template
     description: This is a prototype chime application
-    author: ""
+    author:
   schema:
     - name: NAAS_CLUSTER
       displayName: NaaS Cluster
