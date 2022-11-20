@@ -5,7 +5,7 @@ application:
     author:
   schema:
     - name: NAAS_CLUSTER
-      displayName: NaaS Cluster
+      displayName: NaaS Cluster Test
       description: Name of NaaS cluster for this application.
       defaultValue: ""
       type: string
