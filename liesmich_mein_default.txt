@@ -1,0 +1,16 @@
+20231004
+20231113 upd
+-------------------
+Projekt TD_RL_Mein_Default erstellt auf der Linux-Ebene durch kopieren des Projekts TD_RL_Python3_mocn, 
+das auf Basis von chime_default_template erstellt und nach Inhalten von Niklas' Mocn-Projekt ergänzt wurde.
+
+Hintergrund:
+Die Beispiele in den Dateien des chime-python-template nicht ausführen aufgrund zu alter Links in api_init.py
+zu den Resourcen; 
+außerdem fehlt das Login für Naas Authorize in config-test.yaml 
+sowie die SSL-Lizenz mit der Datei STRootCa-SSLSubCA.pem  im original-Chime-default-Template
+
+cp -r TD_RL_Python3_mocn TD_RL_Mein_Default
+
+Name des Projekts geändert in config.yaml[name]
+
