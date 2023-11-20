@@ -1,0 +1,12 @@
+application:
+  meta:
+    name: TD_RL_Mein_Default
+    description: This is a prototype chime application
+    author:
+  schema:
+    - name: NAAS_CLUSTER
+      displayName: NaaS Cluster
+      description: Name of NaaS cluster for this application.
+      defaultValue: ""
+      type: string
+      group: General Settings
