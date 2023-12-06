@@ -1,2 +1,4 @@
 # Configure parameter values for development time. These will be overriden at runtime with the user provided data
-NAAS_CLUSTER: TEST_CLUSTER
+NAAS_CLUSTER: W_P3_M7_LTE_NOKIA
+CLIENT_ID: 'SZc5nxWR2HNT3zL6xr8xIn7S1bQ'
+CLIENT_SECRET: 'ChXh2d1AvLqYDfcQopBRFq72D1k'

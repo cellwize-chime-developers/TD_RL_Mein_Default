@@ -1,6 +1,6 @@
 application:
   meta:
-    name: chime-python-template
+    name: TD_RL_Mein_Default
     description: This is a prototype chime application
     author:
   schema:

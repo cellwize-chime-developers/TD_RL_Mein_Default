@@ -3,17 +3,34 @@ from utils.context import context
 from utils.api_init import naas
 from utils.api_init import pgw
 from utils.api_init import xpaas
-
+import os
 
 def main():
-    logger.info("Welcome to a Sample EdgeWise Application")
-    logger.info("This main() function is the entry point for the application. Place your application logic here.")
-    logger.info("For API examples checkout getting-stared.py")
-    logger.info("To configure application parameters go to ./config/config.yaml, and ./config/config-test.yaml")
-    logger.info("To configure CHIME Services Urls go to /utils/api_init.py")
-    logger.info("Application context is available via the 'context' dictionary object")
-    logger.info("For EdgeWise API reference visit: https://kb.cellwize.com/display/DPO/Open+Platform+API+Reference")
+    # ================= NAAS API Samples ===================================================================
+    # Doing a simple NaaS search for all LTE cells. Returning selected fields only
+    logger.info("Getting all LTE cells")
+    #lte_cells = naas.api.cells.get_cells(params={'technology': 'LTE', 'fields': '_id,name,mcc,mnc,rsi,pci'})
+    lte_cells = naas.api.cells.get_cells(params={'technology': 'LTE'})
+
+
+    # logging first 5 cells. Cells are under body['elements'][index]['cell]
+    for i in range(5):
+        logger.info(i)
+        logger.info(lte_cells.body['elements'][i]['cell'])
+    logger.info("")
+    logger.info("")
+    logger.info("")
+    logger.info("Nächster Test")
+    logger.info("")
+    
+    a=0
+    for cell in lte_cells.body['elements']:
+        mycellname = cell['cell'].get('name')
+        
+        if mycellname == "417330291L1":
+            logger.info(lte_cells.body['elements']['cell'])
 
 
 if __name__ == '__main__':
     main()
+
